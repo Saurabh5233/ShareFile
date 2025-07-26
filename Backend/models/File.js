@@ -1,10 +1,14 @@
-const mongoose = require('mongoose');
-const fileSchema= new mongoose.Schema(
-    {
-        originalName:{type:String, required:true}, 
-        storedName:{type:String, required:true}, 
-        size: {type:Number, required:true}, 
-        downloadUrl:{type:String, required:true},
-}, {timestamps:true});
+import mongoose from "mongoose";
 
-module.exports = mongoose.model('File', fileSchema);
+const fileSchema = new mongoose.Schema(
+  {
+    originalName: { type: String, required: true },
+    uploadThingUrl: { type: String, required: true },
+    size: { type: Number, required: true },
+    downloadId: { type: String, required: true, unique: true },
+  },
+  { timestamps: true }
+);
+
+const File = mongoose.model("File", fileSchema);
+export default File;
